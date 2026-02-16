@@ -228,7 +228,7 @@ a:hover{
     background-image: url('images/pic2.jpg');
     height: 70vh;
     width: 30vw;
-    background-position: center;
+    background-position: bottom;
     background-size: cover;
 }
 .timings{
@@ -477,8 +477,8 @@ footer h2{
     font-weight: normal;
 }
 
-.reveal{
+/* .reveal{
     opacity:1 !important;
     transform:none !important;
-  }
+  } */
   
