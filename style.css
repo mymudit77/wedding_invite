@@ -583,3 +583,55 @@ footer h2{
 .flipping .leaf {
     transform: rotateX(-180deg);
 }
+
+#musicToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: 1px solid #212121;
+    background: white;
+    cursor: pointer;
+    z-index: 999;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.music-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    background: white;
+    border: 1px solid #212121;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 999;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.music-btn i {
+    font-size: 20px;
+    color: #212121;
+}
+
+/* Hover effect */
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Playing animation */
+.music-btn.playing i {
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
