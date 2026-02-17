@@ -482,3 +482,104 @@ footer h2{
     transform:none !important;
   } */
   
+ /* --- CLEANED COUNTDOWN BOARD --- */
+/* Container for the whole countdown board */
+.countdown-board {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+    justify-content: flex-start;
+}
+
+.flip-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flip-unit span {
+    font-size: 0.7rem;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+/* The Card: Making it slightly narrower and taller for better proportions */
+.flip-card {
+    position: relative;
+    width: 70px;
+    height: 90px;
+    perspective: 1000px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* STATIC PLATES */
+
+.top,
+.bottom {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: #212121;
+    color: white;
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-align: center;
+    overflow: hidden;
+}
+
+.top {
+    top: 0;
+    line-height: 90px;
+    border-bottom: 1px solid #000;
+}
+
+.bottom {
+    bottom: 0;
+    line-height: 0;
+}
+
+/* FLIPPING LEAF */
+
+.leaf {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 0;
+    transform-origin: bottom;
+    transform-style: preserve-3d;
+    transition: transform .6s ease-in;
+    z-index: 5;
+}
+
+/* FRONT + BACK OF LEAF */
+
+.leaf-front,
+.leaf-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #212121;
+    color: white;
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-align: center;
+    backface-visibility: hidden;
+}
+
+.leaf-front {
+    line-height: 90px;
+}
+
+.leaf-back {
+    transform: rotateX(-180deg);
+    line-height: 0;
+}
+
+/* ANIMATION */
+
+.flipping .leaf {
+    transform: rotateX(-180deg);
+}
