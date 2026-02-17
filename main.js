@@ -98,3 +98,79 @@ function updateCard(id, value) {
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
+
+
+function fadeIn(audio) {
+  let vol = 0;
+  const maxVolume = 0.25; // LOW volume
+
+  audio.volume = 0;
+
+  const fade = setInterval(() => {
+    if (vol < maxVolume) {
+      vol += 0.01;
+      audio.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 50);
+}
+
+function fadeOut(audio) {
+  let vol = audio.volume;
+
+  const fade = setInterval(() => {
+    if (vol > 0.01) {
+      vol -= 0.01;
+      audio.volume = vol;
+    } else {
+      audio.pause();
+      clearInterval(fade);
+    }
+  }, 50);
+}
+
+const music = document.getElementById("bgMusic");
+const toggle = document.getElementById("musicToggle");
+
+let isPlaying = false;
+let started = false;
+
+// BUTTON CONTROL
+toggle.addEventListener("click", startMusic);
+
+function startMusic() {
+  if (!isPlaying) {
+    music.play();
+    fadeIn(music);
+    toggle.classList.add("playing");
+    isPlaying = true;
+  } else {
+    fadeOut(music);
+    toggle.classList.remove("playing");
+    isPlaying = false;
+  }
+}
+
+// FIRST SCROLL AUTOSTART
+window.addEventListener("scroll", () => {
+  if (!started) {
+    startMusic();
+    started = true;
+  }
+}, { once: true });
+
+music.addEventListener("canplaythrough", () => {
+  console.log("Music loaded successfully");
+});
+
+music.addEventListener("error", () => {
+  console.log("Music failed to load");
+});
+
+document.addEventListener("click", () => {
+  if (!started) {
+    startMusic();
+    started = true;
+  }
+}, { once: true });
